@@ -1,0 +1,66 @@
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.panel h3 { margin: 0 0 8px; font-size: 20px; }
+.muted { color: var(--muted); font-size: 12px; }
+
+.nfts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.nft {
+  border-radius: 16px;
+  height: 170px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.nft:nth-child(1) {
+  background: radial-gradient(1200px 400px at 10% 10%, #ffb703, transparent 60%),
+    radial-gradient(600px 300px at 80% 80%, #7c3aed, transparent 60%),
+    linear-gradient(135deg, #0f172a, #1f2937);
+}
+.nft:nth-child(2) {
+  background: radial-gradient(800px 300px at 80% 20%, #22d3ee, transparent 60%),
+    radial-gradient(500px 250px at 30% 80%, #f43f5e, transparent 60%),
+    linear-gradient(135deg, #111827, #111827);
+}
+.nft:nth-child(3) {
+  background: radial-gradient(700px 300px at 30% 20%, #60a5fa, transparent 60%),
+    radial-gradient(600px 280px at 80% 80%, #f59e0b, transparent 60%),
+    linear-gradient(135deg, #0b1020, #1f2937);
+}
+
+/* .nft .caption {
+     position: absolute;
+    left: 12px;
+    bottom: 7px;
+    color: #fff;
+    font-weight: 600;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .5);
+} */
+
+.nft a {
+  position: absolute;
+  left: 12px;
+  bottom: 8px;
+  color: #fff;
+  transition: 0.4s;
+  font-weight: 600;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, .5);
+  text-decoration: none;
+}
+
+.nft a:hover { color: red; }
+
+@media (max-width: 1100px) {
+  .nfts { grid-template-columns: repeat(2, 1fr); }
+}

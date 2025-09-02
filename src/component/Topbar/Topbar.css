@@ -1,0 +1,27 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search {
+  flex: 1;
+  position: relative;
+}
+
+.search input {
+  width: 100%;
+  padding: 12px 40px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  outline: 0;
+  background: #fff;
+}
+
+.search svg {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: .5;
+}

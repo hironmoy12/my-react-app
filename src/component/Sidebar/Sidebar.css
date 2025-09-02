@@ -1,0 +1,86 @@
+.sidebar {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 64px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 6px 8px;
+}
+
+.brand .logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #5b67f1, #a78bfa);
+  box-shadow: inset 0 0 0 4px rgba(255, 255, 255, .4);
+}
+
+.brand h1 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.nav {
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav a svg { width: 18px; height: 18px; }
+.nav a.active, .nav a:hover { background: #f6f7fb; }
+
+.section-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--muted);
+  margin: 18px 0 8px;
+}
+
+.coins { display: grid; gap: 10px; }
+.coin { display: flex; align-items: center; gap: 10px; }
+
+.coin .dot { width: 10px; height: 10px; border-radius: 50%; }
+.coin .dot.btc { background: #f7931a; }
+.coin .dot.eth { background: #627eea; }
+.coin .dot.bch { background: #0ac18e; }
+.coin .dot.xlm { background: #06b6d4; }
+
+.help {
+  margin-top: auto;
+  background: #f7f8ff;
+  border: 1px dashed #dfe3ff;
+  border-radius: 14px;
+  padding: 14px;
+  text-align: center;
+}
+
+.help button {
+  background: var(--primary);
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
