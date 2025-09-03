@@ -1,33 +1,37 @@
-import React from 'react'
+import React from "react";
 
 function Box() {
-let cardObj = [
+   let cardObj = [
     {
-        CardTitle: "universe"
+      CardTitle: "Universe",
+      image: "https://picsum.photos/300/200?random=1", // replace with your own
     },
     {
-        CardTitle: "Dying Star"
+      CardTitle: "Dying Star",
+      image: "https://picsum.photos/300/200?random=2",
     },
     {
-        CardTitle: "Far Far Away"
+      CardTitle: "Far Far Away",
+      image: "https://picsum.photos/300/200?random=3",
     },
     {
-        CardTitle: "Sunshine"
-    }
-];
-
+      CardTitle: "Sunshine",
+      image: "https://picsum.photos/300/200?random=4",
+    },
+  ];
 
   return (
-<>
+    <>
       {cardObj.map((card, index) => (
         <div className="nft" key={index}>
+          <img src={card.image} alt={card.CardTitle} className="card-img" />
           <div className="caption">
             <a href="#">{card.CardTitle}</a>
           </div>
         </div>
       ))}
     </>
-  )
+  );
 }
 
-export default Box
+export default Box;

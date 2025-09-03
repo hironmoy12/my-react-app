@@ -30,11 +30,11 @@
   overflow: hidden;
 }
 
-.nft{
+/* .nft{
   background: radial-gradient(1200px 400px at 10% 10%, #ffb703, transparent 60%),
     radial-gradient(600px 300px at 80% 80%, #7c3aed, transparent 60%),
     linear-gradient(135deg, #0f172a, #1f2937);
-}
+} */
 
 /* .nft:nth-child(2) {
   background: radial-gradient(800px 300px at 80% 20%, #22d3ee, transparent 60%),
@@ -76,4 +76,9 @@
   .nfts {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+img.card-img {
+    width: 100%;
+    object-fit: cover;
 }
