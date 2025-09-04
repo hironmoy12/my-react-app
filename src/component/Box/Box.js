@@ -4,7 +4,7 @@ function Box() {
    let cardObj = [
     {
       CardTitle: "Universe",
-      image: "https://picsum.photos/300/200?random=1", // replace with your own
+      image: "https://picsum.photos/300/200?random=1", 
     },
     {
       CardTitle: "Dying Star",
