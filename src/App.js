@@ -2,7 +2,7 @@ import './App.css';
 import Card from './component/CardSection/Card';
 import Sidebar from './component/Sidebar/Sidebar';
 import Topbar from './component/Topbar/Topbar';
-
+import {NewBox} from './component/CardSection/Card';
 function App() {
   return (
   <div className="app">
@@ -14,7 +14,9 @@ function App() {
     <Topbar/>
  
     <Card/>
-    </main>
+    <NewBox/>
+    </main> 
+   
     </div>
   );
 }

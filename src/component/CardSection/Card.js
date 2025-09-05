@@ -49,3 +49,12 @@ function Card() {
 }
 
 export default Card;
+
+
+
+export function NewBox() {
+  return (
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, laborum adipisci aperiam delectus mollitia similique architecto excepturi vitae? Fugit rem laudantium adipisci qui nulla molestias quos laborum, voluptatibus sequi fugiat.</p>
+  )
+}
+

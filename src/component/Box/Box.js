@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../Button/Button";
 
-function Box({ data}) {
+ function Box({ data}) {
 
 
   return (
@@ -24,3 +24,16 @@ function Box({ data}) {
 }
 
 export default Box;
+
+
+
+
+
+
+
+
+
+
+
+
+
