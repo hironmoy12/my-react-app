@@ -1,32 +1,21 @@
 import React from "react";
+import Button from "../Button/Button";
 
-function Box() {
-   let cardObj = [
-    {
-      CardTitle: "Universe",
-      image: "https://picsum.photos/300/200?random=1", 
-    },
-    {
-      CardTitle: "Dying Star",
-      image: "https://picsum.photos/300/200?random=2",
-    },
-    {
-      CardTitle: "Far Far Away",
-      image: "https://picsum.photos/300/200?random=3",
-    },
-    {
-      CardTitle: "Sunshine",
-      image: "https://picsum.photos/300/200?random=4",
-    },
-  ];
+function Box({ data}) {
+
 
   return (
     <>
-      {cardObj.map((card, index) => (
+      {data.map((card, index) => (
         <div className="nft" key={index}>
           <img src={card.image} alt={card.CardTitle} className="card-img" />
           <div className="caption">
             <a href="#">{card.CardTitle}</a>
+             <p>{card.desc}</p>
+              <div className="nft-footer">
+              <span className="price">{card.price}</span>
+           <Button text={card.buttonText}/>
+            </div>
           </div>
         </div>
       ))}
