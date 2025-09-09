@@ -1,5 +1,6 @@
 import React from 'react'
 import './Sidebar.css';
+import { Link } from 'react-router-dom';
 function Sidebar() {
   return (
     <aside className="sidebar">
@@ -18,7 +19,7 @@ function Sidebar() {
           </svg>
           Dashboard
         </a>
-        <a href="#">Buy & Sell</a>
+        <Link to='buy-sell'>Buy & Sell</Link>
         <a href="#">Swap</a>
         <a href="#">NFTs</a>
         <a href="#">My Favorites</a>

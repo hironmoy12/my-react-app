@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import "./Topbar.css";
 function Topbar() {
   const nftList = ["CryptoPunks", "Bored Ape", "Doodles", "Azuki", "moonbirds"];
-   const [query, setQuery] = useState("");
+
+  const [query, setQuery] = useState("");
+
   const [filteredNFTs, setFilteredNFTs] = useState([]);
 
-   const handleSearch = (e) => {
+  const handleSearch = (e) => {
     const value = e.target.value;
     setQuery(value);
 
@@ -31,11 +33,13 @@ function Topbar() {
           <circle cx="11" cy="11" r="7" />
           <line x1="21" y1="21" x2="16.65" y2="16.65" />
         </svg>
-        <input  type="text"
+        <input
+          type="text"
           placeholder="Search NFTs"
           value={query}
-          onChange={handleSearch} />
-           {/* Dropdown list */}
+          onChange={handleSearch}
+        />
+        {/* Dropdown list */}
         {filteredNFTs.length > 0 && (
           <ul className="search-dropdown">
             {filteredNFTs.map((nft, index) => (
