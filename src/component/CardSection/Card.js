@@ -1,8 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Card.css";
 import Box from "../Box/Box";
 import cardObj from "../../Data";
 function Card() {
+const [count, setCount] = useState(0);
+
+const increment = () => {
+  setCount(count + 1);
+  console.log(count)
+};
+
+const decrement = () => {
+  setCount(count - 1);
+};
 
   return (
     <div className="grid">
@@ -14,6 +24,19 @@ function Card() {
         <div className="nfts">
           <Box data={cardObj} />
         </div>
+
+       <div className="counter">
+        <p>
+          Counter
+        </p>
+     
+        <button onClick={increment} style={{margin:'10px', background: 'green', border: '0', color: '#fff', padding: '10px'}}>+</button>
+
+         <b><span>{count}</span></b>  
+      <button onClick={decrement} style={{margin:'10px', background: 'red', border: '0', color: '#fff', padding: '10px'}}>-</button>
+       </div>
+
+
       </section>
     </div>
   );

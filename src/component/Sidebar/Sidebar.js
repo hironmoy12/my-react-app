@@ -6,7 +6,7 @@ function Sidebar() {
     <aside className="sidebar">
       <div className="brand">
         <div className="logo"></div>
-        <h1>Xoi</h1>
+      <Link to="/"><h1>Xoi</h1></Link>  
       </div>
 
       <nav className="nav">
@@ -20,7 +20,7 @@ function Sidebar() {
           Dashboard
         </a>
         <Link to='buy-sell'>Buy & Sell</Link>
-        <a href="#">Swap</a>
+        <Link to='swap'>Swap</Link>
         <a href="#">NFTs</a>
         <a href="#">My Favorites</a>
       </nav>

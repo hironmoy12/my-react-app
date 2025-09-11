@@ -137,3 +137,10 @@
 .buy-btn:hover {
   background: var(--primary-2);
 }
+
+.counter button:nth-child(1) {
+	background: green;
+	color: #fff;
+	border: 0;
+	padding: 7px;
+}
