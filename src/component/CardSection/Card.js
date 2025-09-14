@@ -4,6 +4,7 @@ import Box from "../Box/Box";
 import cardObj from "../../Data";
 function Card() {
 const [count, setCount] = useState(0);
+ const [detailsCard, setDetailsCard] = useState(null);
 
 const increment = () => {
   setCount(count + 1);
@@ -22,12 +23,12 @@ const decrement = () => {
         <div className="muted">Recommended • New Trends • Multi Colors</div>
 
         <div className="nfts">
-          <Box data={cardObj} />
+          <Box data={cardObj} onSelect={setDetailsCard}/>
         </div>
 
        <div className="counter">
         <p>
-          Counter
+          Counte
         </p>
      
         <button onClick={increment} style={{margin:'10px', background: 'green', border: '0', color: '#fff', padding: '10px'}}>+</button>
@@ -38,11 +39,41 @@ const decrement = () => {
 
 
       </section>
+
+   {/* Show details in inputs */}
+   
+        {detailsCard && (
+          <div className="details-form" style={{ marginTop: "20px" }}>
+            <h4>Selected Card Details</h4>
+            <input
+              type="text"
+              value={detailsCard.CardTitle}
+              readOnly
+              style={{ display: "block", margin: "10px 0", padding: "8px" }}
+            />
+            <input
+              type="text"
+              value={detailsCard.desc}
+              readOnly
+              style={{ display: "block", margin: "10px 0", padding: "8px" }}
+            />
+            <input
+              type="text"
+              value={detailsCard.price}
+              readOnly
+              style={{ display: "block", margin: "10px 0", padding: "8px" }}
+            />
+          </div>
+        )}
+
+
     </div>
   );
 }
 
 export default Card;
+
+// NewBox Component
 
 
 

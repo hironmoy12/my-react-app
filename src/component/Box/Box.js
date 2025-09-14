@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../Button/Button";
 
- function Box({ data}) {
+ function Box({ data, onSelect}) {
 
 
   return (
@@ -14,7 +14,8 @@ import Button from "../Button/Button";
              <p>{card.desc}</p>
               <div className="nft-footer">
               <span className="price">{card.price}</span>
-           <Button text={card.buttonText}/>
+           <Button  text={card.buttonText}
+                onClick={() => onSelect(card)} />
             </div>
           </div>
         </div>
