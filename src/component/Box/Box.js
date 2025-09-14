@@ -1,9 +1,10 @@
-import React from "react";
+import React  from "react";
 import Button from "../Button/Button";
 
- function Box({ data, onSelect}) {
+function Box({ data, onSelect }) {
+    
 
-
+     
   return (
     <>
       {data.map((card, index) => (
@@ -11,11 +12,10 @@ import Button from "../Button/Button";
           <img src={card.image} alt={card.CardTitle} className="card-img" />
           <div className="caption">
             <a href="#">{card.CardTitle}</a>
-             <p>{card.desc}</p>
-              <div className="nft-footer">
+            <p>{card.desc}</p>
+            <div className="nft-footer">
               <span className="price">{card.price}</span>
-           <Button  text={card.buttonText}
-                onClick={() => onSelect(card)} />
+              <Button text={card.buttonText} onClick={() => onSelect(card)} />
             </div>
           </div>
         </div>
@@ -25,16 +25,3 @@ import Button from "../Button/Button";
 }
 
 export default Box;
-
-
-
-
-
-
-
-
-
-
-
-
-
