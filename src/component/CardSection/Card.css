@@ -111,9 +111,9 @@
 }
 
 .nft-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+     display: flex;
+    justify-content: end;
+    align-items: flex-end;
 }
 
 .price {
@@ -180,4 +180,8 @@
   background: #fff;
   outline: none;
   box-shadow: 0 0 6px rgba(74,144,226,0.4);
+}
+.box-details{
+     color: #fff;
+    padding: 0 17px;
 }
