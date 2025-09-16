@@ -1,6 +1,6 @@
-
 const cardObj = [
   {
+    id: 1,
     CardTitle: "Universe",
     image: "https://picsum.photos/300/200?random=1",
     desc: "Explore the infinite cosmos.",
@@ -8,6 +8,7 @@ const cardObj = [
     buttonText: "Explore",
   },
   {
+    id: 2,
     CardTitle: "Dying Star",
     image: "https://picsum.photos/300/200?random=2",
     desc: "Witness the collapse of a giant.",
@@ -15,6 +16,7 @@ const cardObj = [
     buttonText: "Bid Now",
   },
   {
+    id: 3,
     CardTitle: "Far Far Away",
     image: "https://picsum.photos/300/200?random=3",
     desc: "A galaxy beyond imagination.",
@@ -22,6 +24,7 @@ const cardObj = [
     buttonText: "Buy Now",
   },
   {
+    id: 4,
     CardTitle: "Sunshine",
     image: "https://picsum.photos/300/200?random=4",
     desc: "Feel the warmth of eternity.",
@@ -30,4 +33,4 @@ const cardObj = [
   },
 ];
 
-export default cardObj; 
+export default cardObj;
