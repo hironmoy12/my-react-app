@@ -6,6 +6,7 @@ import "./Card.css";
 function Card() {
   // const [count, setCount] = useState(0);
   // const [detailsCard, setDetailsCard] = useState(null);
+  
   const navigate = useNavigate();
   const [users, setUsers] = useState(() => {
     return JSON.parse(localStorage.getItem("users")) || [];
@@ -14,28 +15,19 @@ function Card() {
   const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
 
-const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const newUser = { id: Date.now(), name, age, email };
 
-
-  const stored = JSON.parse(localStorage.getItem("users")) || [];
+    const stored = JSON.parse(localStorage.getItem("users")) || [];
     stored.push(newUser);
     localStorage.setItem("users", JSON.stringify(stored));
 
- setUsers(stored);
+    setUsers(stored);
     setName("");
     setAge("");
     setEmail("");
-  
-}
-
-
-
-
-
-
-
+  };
 
   // const increment = () => {
   //   setCount(count + 1);
@@ -116,56 +108,61 @@ const handleSubmit = (e) => {
       )} */}
 
       {/* 🔹 User Form */}
-      <div style={{ marginTop: "20px" , textAlign:"left"}}> 
-       
+      <div style={{ marginTop: "20px", textAlign: "left" }}>
         <form onSubmit={handleSubmit} className="form-container">
-           <h3>Add User</h3>
-          <input type="text" name="name" 
-          placeholder="Enter name"
-           value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-           />
+          <h3>Add User</h3>
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
           <br />
-          <input type="number" name="age" placeholder="Enter age"
-           value={age}
-          onChange={(e) => setAge(e.target.value)}
-          required
-           />
+          <input
+            type="tel"
+            name="age"
+            placeholder="Enter age"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+            required
+          />
           <br />
-          <input type="email" name="email" placeholder="Enter email"
-          
-           value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <br />
           <button type="submit">Submit</button>
         </form>
       </div>
-<div className="saved-users">
- <h3>Saved Users</h3>
-  <div className="user-cards">
-     
-    {users.map((user) => (
-      <div key={user.id} className="user-card">
-        <h4>{user.name}</h4>
-        <p><strong>Age:</strong> {user.age}</p>
-        <p><strong>Email:</strong> {user.email}</p>
-        <button onClick={() => navigate(`/details/${user.id}`)}>
-          View Details
-        </button>
+      <div className="saved-users">
+        <h3>Saved Users</h3>
+        <div className="user-cards">
+          {users.map((user) => (
+            <div key={user.id} className="user-card">
+              <h4>{user.name}</h4>
+              <p>
+                <strong>Age:</strong> {user.age}
+              </p>
+              <p>
+                <strong>Email:</strong> {user.email}
+              </p>
+              <button onClick={() => navigate(`/details/${user.id}`)}>
+                View Details
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
-    ))}
-  </div>
-</div>
-
-      
     </div>
   );
 }
-
 
 export default Card;
 

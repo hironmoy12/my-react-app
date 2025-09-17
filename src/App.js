@@ -14,11 +14,9 @@ function App() {
       <main className="main">
         <Topbar />
         <Routes>
-          {/* ✅ Card page shows only on root */}
           <Route path="/" element={<Card />} />
           <Route path="/buy-sell" element={<BuySell />} />
           <Route path="/swap" element={<Swap />} />
-          {/* ✅ Details page shows only when navigating with ID */}
           <Route path="/details/:id" element={<DetailsPage />} />
         </Routes>
       </main>
