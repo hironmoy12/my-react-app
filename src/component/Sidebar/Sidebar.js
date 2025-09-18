@@ -23,6 +23,7 @@ function Sidebar() {
         <Link to='swap'>Swap</Link>
         <a href="#">NFTs</a>
         <a href="#">My Favorites</a>
+        <Link to='counter'>Counter</Link>
       </nav>
 
       <div>
