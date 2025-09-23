@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useId, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Card.css";
 // import Box from "../Box/Box";
@@ -10,7 +10,9 @@ function Card() {
   const navigate = useNavigate();
   const [users, setUsers] = useState(() => {
     return JSON.parse(localStorage.getItem("users")) || [];
+    
   });
+  
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
@@ -28,6 +30,22 @@ function Card() {
     setAge("");
     setEmail("");
   };
+
+
+
+ const deleteHandler = (userId) => {
+  setUsers((prevUsers) => {
+    const updatedUsers = prevUsers.filter((user) => user.id !== userId);
+
+   
+    localStorage.setItem('users', JSON.stringify(updatedUsers));
+
+    return updatedUsers;
+  });
+};
+
+ 
+  
 
   // const increment = () => {
   //   setCount(count + 1);
@@ -142,10 +160,12 @@ function Card() {
         </form>
       </div>
       <div className="saved-users">
-        <h3>Saved Users</h3>
+       
         <div className="user-cards">
           {users.map((user) => (
+            
             <div key={user.id} className="user-card">
+           
               <h4>{user.name}</h4>
               <p>
                 <strong>Age:</strong> {user.age}
@@ -156,6 +176,8 @@ function Card() {
               <button onClick={() => navigate(`/details/${user.id}`)}>
                 View Details
               </button>
+              <br />
+                <button onClick={() => deleteHandler(user.id)}>Delete</button>
             </div>
           ))}
         </div>
