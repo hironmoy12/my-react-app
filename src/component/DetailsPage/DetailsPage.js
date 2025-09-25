@@ -14,6 +14,8 @@ function DetailsPage() {
       <h2>Details for {user.name}</h2>
       <p><strong>Age:</strong> {user.age}</p>
       <p><strong>Email:</strong> {user.email}</p>
+        <p><strong>Password:</strong> {user.password}</p>
+        <p><strong>Valid User:</strong> {user.validUser ? "Yes" : "No"}</p>
     </div>
   )
 }

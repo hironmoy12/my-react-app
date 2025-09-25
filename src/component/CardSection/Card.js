@@ -1,25 +1,56 @@
-import React, { useId, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Card.css";
-// import Box from "../Box/Box";
-// import cardObj from "../../Data";
+
 function Card() {
-  // const [count, setCount] = useState(0);
-  // const [detailsCard, setDetailsCard] = useState(null);
-  
   const navigate = useNavigate();
   const [users, setUsers] = useState(() => {
     return JSON.parse(localStorage.getItem("users")) || [];
-    
   });
-  
+
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [validUser, setValidUser] = useState(false);
+  const [showValidOnly, setShowValidOnly] = useState(false);
+  const [errors, setErrors] = useState({
+    name: "",
+    age: "",
+    password: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newUser = { id: Date.now(), name, age, email };
+
+    const namePattern = /^[a-zA-Z ]+$/;
+    const agePattern = /^[1-9][0-9]{0,2}$/;
+    const passwordPattern =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    let valid = true;
+    const newErrors = { name: "", age: "", password: "" };
+
+    if (!namePattern.test(name)) {
+      newErrors.name = "Name must contain only letters and spaces";
+      valid = false;
+    }
+    if (!agePattern.test(age)) {
+      newErrors.age = "Age must be a number between 1-100";
+      valid = false;
+    }
+
+    if (!passwordPattern.test(password)) {
+      newErrors.password =
+        "Password must be 6-20 chars, include 1 number & 1 special char";
+      valid = false;
+    }
+
+    setErrors(newErrors);
+
+    if (!valid) return;
+
+    const newUser = { id: Date.now(), name, age, email, password, validUser };
 
     const stored = JSON.parse(localStorage.getItem("users")) || [];
     stored.push(newUser);
@@ -29,103 +60,24 @@ function Card() {
     setName("");
     setAge("");
     setEmail("");
+    setPassword("");
+    setValidUser(false);
+    setErrors({ name: "", age: "", password: "" });
+    console.log("Saved User:", newUser);
   };
 
+  const deleteHandler = (userId) => {
+    setUsers((prevUsers) => {
+      const updatedUsers = prevUsers.filter((user) => user.id !== userId);
 
+      localStorage.setItem("users", JSON.stringify(updatedUsers));
 
- const deleteHandler = (userId) => {
-  setUsers((prevUsers) => {
-    const updatedUsers = prevUsers.filter((user) => user.id !== userId);
-
-   
-    localStorage.setItem('users', JSON.stringify(updatedUsers));
-
-    return updatedUsers;
-  });
-};
-
- 
-  
-
-  // const increment = () => {
-  //   setCount(count + 1);
-  //   console.log(count);
-  // };
-
-  // const decrement = () => {
-  //   setCount(count - 1);
-  // };
+      return updatedUsers;
+    });
+  };
 
   return (
     <div className="grid">
-      {/* Left Panel */}
-      {/* <section className="panel">
-        <h3>Recently Added NFTs</h3>
-        <div className="muted">Recommended • New Trends • Multi Colors</div>
-
-        <div className="nfts">
-          <Box data={cardObj} />
-        </div>
-
-        <div className="counter">
-          <p>Counter</p>
-
-          <button
-            onClick={increment}
-            style={{
-              margin: "10px",
-              background: "green",
-              border: "0",
-              color: "#fff",
-              padding: "10px",
-            }}
-          >
-            +
-          </button>
-
-          <b>
-            <span>{count}</span>
-          </b>
-          <button
-            onClick={decrement}
-            style={{
-              margin: "10px",
-              background: "red",
-              border: "0",
-              color: "#fff",
-              padding: "10px",
-            }}
-          >
-            -
-          </button>
-        </div>
-      </section> */}
-
-      {/* {detailsCard && (
-        <div className="details-form" style={{ marginTop: "20px" }}>
-          <h4>Selected Card Details</h4>
-          <input
-            type="text"
-            value={detailsCard.CardTitle}
-            readOnly
-            style={{ display: "block", margin: "10px 0", padding: "8px" }}
-          />
-          <input
-            type="text"
-            value={detailsCard.desc}
-            readOnly
-            style={{ display: "block", margin: "10px 0", padding: "8px" }}
-          />
-          <input
-            type="text"
-            value={detailsCard.price}
-            readOnly
-            style={{ display: "block", margin: "10px 0", padding: "8px" }}
-          />
-        </div>
-      )} */}
-
-      {/* 🔹 User Form */}
       <div style={{ marginTop: "20px", textAlign: "left" }}>
         <form onSubmit={handleSubmit} className="form-container">
           <h3>Add User</h3>
@@ -137,7 +89,9 @@ function Card() {
             onChange={(e) => setName(e.target.value)}
             required
           />
-          <br />
+
+          <span className="error">{errors.name}</span>
+
           <input
             type="tel"
             name="age"
@@ -146,7 +100,8 @@ function Card() {
             onChange={(e) => setAge(e.target.value)}
             required
           />
-          <br />
+
+          <span className="error">{errors.age}</span>
           <input
             type="email"
             name="email"
@@ -155,31 +110,75 @@ function Card() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+
           <br />
+
+          <input
+            type="password"
+            name="password"
+            value={password}
+            placeholder="Enter password"
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          <span className="error">{errors.password}</span>
+          <div className="check-box">
+            <input
+              type="checkbox"
+              id="validUser"
+              checked={validUser}
+              onChange={(e) => setValidUser(e.target.checked)}
+            />
+            <label htmlFor="validUser">
+              <b>Valid User</b>
+            </label>
+          </div>
+
           <button type="submit">Submit</button>
         </form>
       </div>
+      <div
+        className="show-valid-user"
+        style={{ textAlign: "right", marginTop: "20px" }}
+      >
+        <input
+          type="checkbox"
+          name=""
+          id=""
+          value={showValidOnly}
+          onChange={(e) => setShowValidOnly(e.target.checked)}
+        />
+        <label htmlFor="validUser">
+          <b>Show Valid User Only</b>
+        </label>
+      </div>
       <div className="saved-users">
-       
         <div className="user-cards">
-          {users.map((user) => (
-            
-            <div key={user.id} className="user-card">
-           
-              <h4>{user.name}</h4>
-              <p>
-                <strong>Age:</strong> {user.age}
-              </p>
-              <p>
-                <strong>Email:</strong> {user.email}
-              </p>
-              <button onClick={() => navigate(`/details/${user.id}`)}>
-                View Details
-              </button>
-              <br />
+          {users
+            .filter((user) => (showValidOnly ? user.validUser : true))
+            .map((user) => (
+              <div key={user.id} className="user-card">
+                <h4>{user.name}</h4>
+                <p>
+                  <strong>Age:</strong> {user.age}
+                </p>
+                <p>
+                  <strong>Email:</strong> {user.email}
+                </p>
+                <p>
+                  <strong>Password:</strong> {user.password ? "******" : "N/A"}
+                </p>
+                <p>
+                  <strong>Valid User:</strong> {user.validUser ? "Yes" : "No"}
+                </p>
+                <button onClick={() => navigate(`/details/${user.id}`)}>
+                  View Details
+                </button>
+                <br />
                 <button onClick={() => deleteHandler(user.id)}>Delete</button>
-            </div>
-          ))}
+              </div>
+            ))}
         </div>
       </div>
     </div>
@@ -187,14 +186,3 @@ function Card() {
 }
 
 export default Card;
-
-// export function NewBox() {
-//   return (
-//     <p>
-//       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt,
-//       laborum adipisci aperiam delectus mollitia similique architecto excepturi
-//       vitae? Fugit rem laudantium adipisci qui nulla molestias quos laborum,
-//       voluptatibus sequi fugiat.
-//     </p>
-//   );
-// }
